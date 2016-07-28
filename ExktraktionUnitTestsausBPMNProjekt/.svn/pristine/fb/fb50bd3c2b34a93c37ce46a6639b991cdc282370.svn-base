@@ -1,0 +1,8 @@
+package org.transformBpmnDocumentforRecording.transformationLogik;
+
+public interface IObservable {
+	
+	public abstract void addOberserver(Observer obs); 
+	public abstract void removeObserver(Observer obs);
+	public abstract void notifyObservers();
+}

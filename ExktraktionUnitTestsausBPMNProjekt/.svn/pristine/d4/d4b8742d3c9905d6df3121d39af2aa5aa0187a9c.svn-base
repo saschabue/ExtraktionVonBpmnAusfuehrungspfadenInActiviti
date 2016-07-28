@@ -1,0 +1,144 @@
+package org.transformBpmnDocumentforRecording.transformationLogik;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+
+import org.PathsettingController;
+import org.activiti.bpmn.converter.BpmnXMLConverter;
+import org.activiti.bpmn.exceptions.XMLException;
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngines;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class HandleBPMNDocuments implements IHandleDocuments, IObservable {
+	private static Logger log = LoggerFactory.getLogger(HandleBPMNDocuments.class);
+	private XMLInputFactory factory = XMLInputFactory.newInstance();
+	
+	private List<Observer> observers = new ArrayList<Observer>();
+	public BpmnModel model = null;
+
+	/**
+	 * The standard constructor sets the default directory where process files
+	 * are loaded from
+	 */
+	public HandleBPMNDocuments() {
+	}
+
+	/*
+	 * @throws NullPointerException File is empty or has wring format or does
+	 * not exist
+	 * 
+	 * @param fileName Name of the file
+	 * 
+	 * @return BPMN model of the file
+	 */
+	@Override
+	public BpmnModel loadDocument(String fileName) throws NullPointerException {
+		File sourceDirectory = new File(new PathsettingController().getOriginalProcesses());;
+		File file = null;
+		for (File tmp : sourceDirectory.listFiles()) {
+			if (tmp.isFile() & tmp.getName().equals(fileName)
+					& ((tmp.isFile() & (tmp.getName().endsWith(".bpmn") | tmp.getName().endsWith(".xml")))))
+				file = tmp;
+		}
+		if (!file.exists()) {
+			log.error("The file does not exist, please check the file name");
+			throw new NullPointerException(file.getName());
+		}
+		try {
+			model = this.convertFileToBPMNModel(file);
+			notifyObservers();
+			return model;
+		} catch (XMLException e) {
+			log.error("XMLException in Document: " + fileName + " The file is empty or has wrong format: "
+					+ e.toString());
+		}
+		return null;
+	}
+
+	/**
+	 * @param file
+	 * @return
+	 * @throws XMLException
+	 */
+	private BpmnModel convertFileToBPMNModel(File file) throws XMLException {
+		XMLStreamReader streamReader = null;
+
+		try {
+			streamReader = factory.createXMLStreamReader(new FileReader(file));
+			return new BpmnXMLConverter().convertToBpmnModel(streamReader);
+		} catch (FileNotFoundException e) {
+			log.error("The file does not exist");
+			e.printStackTrace();
+		} catch (XMLStreamException e) {
+			log.error("The file has wrong format" + file.getName());
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public void deployModelToEngine(String filePath, String fileName) {
+		ProcessEngine processEngine = ProcessEngines.getDefaultProcessEngine();
+
+		try {
+			processEngine.getRepositoryService().createDeployment()
+					.addInputStream(fileName, new FileInputStream(filePath + fileName)).deploy();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void addOberserver(Observer obs) {
+		observers.add(obs);
+	}
+
+	@Override
+	public void removeObserver(Observer obs) {
+		observers.remove(obs);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer observer : observers) {
+			observer.update(model);
+		}
+	}
+
+	@Override
+	public void saveModelAsDocument(BpmnModel model, String fileName) {
+		byte[] convertToXML = new BpmnXMLConverter().convertToXML(model);
+		File file = new File(new PathsettingController().getExtendedProcesses() + fileName);
+		System.out.println("check: " + file.getAbsolutePath());
+		OutputStream outputStream = null;
+		try {
+			outputStream = new FileOutputStream(file);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+
+		ByteArrayOutputStream baos = new ByteArrayOutputStream(convertToXML.length);
+		try {
+			baos.write(convertToXML);
+			baos.writeTo(outputStream);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="processEngineConfiguration"
+    class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+
+    <property name="jdbcUrl"
+      value="jdbc:h2:tcp://localhost/~/db9;AUTO_SERVER=TRUE" />
+    
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    
+    <property name="jdbcUsername" value="sa" />
+    <property name="jdbcPassword" value="" />
+
+    <!-- Database configurations -->
+    <property name="databaseSchemaUpdate" value="true" />
+
+    <!-- OLD: job executor configurations -->
+    <property name="jobExecutorActivate" value="false" />
+    
+	<!-- NEW : Aysnc job executor configurations (timer events)-->
+<!-- 	<property name="asyncExecutorEnabled" value="true" /> -->
+<!-- 	<property name="asyncExecutorActivate" value="true" /> -->
+    
+    <!-- mail server configurations -->
+    <property name="mailServerHost" value="unimail.tu-dortmund.de" />
+	<property name="mailServerPort" value="995" />
+	<property name="mailServerUseSSL" value="true" />
+	<property name="mailServerUseTLS" value="true" />
+	<property name="mailServerDefaultFrom" value="Sascha.Buelles@tu-dortmund.de" />
+	<property name="mailServerUsername" value="smssbuel" />
+	<property name="mailServerPassword" value="" />
+  </bean>
+
+</beans>

@@ -1,0 +1,36 @@
+package org.extraktion.listener;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.extraktion.TestObjectDesigner;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.extraktion.templatesCreation.behaviour.StartElementObject;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+/**
+ * Gruppen Listener für Start Elemente.
+ * 
+ * @author Sascha Bülles
+ */
+public class ExecutionListenerImplStartElement extends StandardExecutionListenerImplementation {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected final SuperElementObject createExecutionObjectWithType(final DelegateExecution execution) {
+		SessionFactory hibernateSessionFactory = TestObjectDesigner.getInstance().getHibernateSessionFactory();
+		
+		SuperElementObject startElementObject = new StartElementObject(execution);
+		startElementObject.setelementName("StartElement");
+		startElementObject.setElementDefinitionKey(execution.getCurrentActivityId());
+
+		Session session = hibernateSessionFactory.openSession();
+		session.beginTransaction();
+		startElementObject.setId(session.createNativeQuery("SELECT * FROM EXTRAKTION;").getResultList().size() + 1);
+		session.save(startElementObject);
+		session.getTransaction().commit();
+		session.close();
+		
+		return startElementObject;
+	}
+}

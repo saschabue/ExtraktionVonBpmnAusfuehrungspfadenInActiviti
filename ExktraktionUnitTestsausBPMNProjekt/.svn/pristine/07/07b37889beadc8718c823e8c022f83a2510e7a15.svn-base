@@ -1,0 +1,42 @@
+package org.extraktion.ueberdeckungsalysen;
+
+public class C1_Zweigueberdeckung {
+	private double anzahlAktuellePfadausfuehrungen; 
+	private double anzahlAlleSequenzenFluesse;
+	
+	public C1_Zweigueberdeckung(double anzahlAktuellePfadausfuehrungen, double anzahlAlleSequenzenFluesse) {
+		this.anzahlAktuellePfadausfuehrungen = anzahlAktuellePfadausfuehrungen;
+		this.anzahlAlleSequenzenFluesse = anzahlAlleSequenzenFluesse;
+	}
+
+	public void increaseaktuellePfadausfuehrungen(){
+		anzahlAktuellePfadausfuehrungen+=1; 
+	}
+	
+	public void resetUeberdeckung(){
+		anzahlAktuellePfadausfuehrungen = 0; 
+		anzahlAlleSequenzenFluesse = 0; 
+	} 
+	
+	public double getC0Uberdeckungsgrad(){
+		return (anzahlAktuellePfadausfuehrungen/anzahlAlleSequenzenFluesse);
+	}
+
+	public double getAnzahlAktuellePfadausfuehrungen() {
+		return anzahlAktuellePfadausfuehrungen;
+	}
+
+	public void setAnzahlAktuellePfadausfuehrungen(double anzahlAktuellePfadausfuehrungen) {
+		this.anzahlAktuellePfadausfuehrungen = anzahlAktuellePfadausfuehrungen;
+	}
+
+	public double getAnzahlAlleSequenzenFluesse() {
+		return anzahlAlleSequenzenFluesse;
+	}
+
+	public void setAnzahlAlleSequenzenFluesse(double anzahlAlleSequenzenFluesse) {
+		this.anzahlAlleSequenzenFluesse = anzahlAlleSequenzenFluesse;
+	}
+	
+	
+}

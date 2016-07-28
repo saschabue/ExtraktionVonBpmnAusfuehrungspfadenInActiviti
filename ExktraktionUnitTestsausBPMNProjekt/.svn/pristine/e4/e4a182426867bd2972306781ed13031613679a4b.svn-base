@@ -1,0 +1,37 @@
+package org.extraktion.listener;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.extraktion.TestObjectDesigner;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.extraktion.templatesCreation.behaviour.SkriptTaskElementObject;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+/**
+ * Gruppen Listener für Skript Tasks.
+ * @author Sascha Buelles
+ *
+ */
+public class ExecutionListenerImplSkriptTask extends StandardExecutionListenerImplementation {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected final SuperElementObject createExecutionObjectWithType(final DelegateExecution execution) {
+		SuperElementObject skriptTaskElementObject = new SkriptTaskElementObject(execution);
+
+		skriptTaskElementObject.setelementName("SkriptTaskElement");
+		skriptTaskElementObject.setElementDefinitionKey(execution.getCurrentActivityId());
+		SessionFactory hibernateSessionFactory = TestObjectDesigner.getInstance().getHibernateSessionFactory();
+		Session session = hibernateSessionFactory.openSession();
+		session.beginTransaction();
+		skriptTaskElementObject.setId(session.createNativeQuery("SELECT * FROM EXTRAKTION;").getResultList().size() + 1);
+
+		session.save(skriptTaskElementObject);
+		session.getTransaction().commit();
+		session.close();
+		
+		return skriptTaskElementObject;
+	}
+
+}

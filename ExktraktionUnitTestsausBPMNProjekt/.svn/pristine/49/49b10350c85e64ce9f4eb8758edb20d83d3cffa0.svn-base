@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="called_process" isExecutable="true">
+    <startEvent id="calledstartelement" name="Called Start">
+      <extensionElements>
+        <activiti:formProperty id="new_property_1" name="Boolsche Variable aus Called Process" type="boolean" variable="variableFromCalledProcess"/>
+      </extensionElements>
+    </startEvent>
+    <userTask id="calledut1" name="Called UT 1" activiti:assignee="sascha">
+      <multiInstanceLoopCharacteristics isSequential="true">
+        <loopCardinality>3</loopCardinality>
+      </multiInstanceLoopCharacteristics>
+    </userTask>
+    <sequenceFlow id="sid-FEF8BB73-5476-4474-B8E5-227308CAA184" sourceRef="calledstartelement" targetRef="calledut1"/>
+    <endEvent id="sid-398BFFB0-094F-4D52-BA72-D8DD2868737B"/>
+    <sequenceFlow id="sid-267F297D-0BD3-4CEC-8103-84EAFFF77F22" sourceRef="calledut1" targetRef="sid-398BFFB0-094F-4D52-BA72-D8DD2868737B"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_called_process">
+    <bpmndi:BPMNPlane bpmnElement="called_process" id="BPMNPlane_called_process">
+      <bpmndi:BPMNShape bpmnElement="calledstartelement" id="BPMNShape_calledstartelement">
+        <omgdc:Bounds height="30.0" width="30.0" x="205.81668090820312" y="180.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="calledut1" id="BPMNShape_calledut1">
+        <omgdc:Bounds height="80.0" width="100.0" x="280.8166809082031" y="155.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-398BFFB0-094F-4D52-BA72-D8DD2868737B" id="BPMNShape_sid-398BFFB0-094F-4D52-BA72-D8DD2868737B">
+        <omgdc:Bounds height="28.0" width="28.0" x="425.8166809082031" y="181.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-FEF8BB73-5476-4474-B8E5-227308CAA184" id="BPMNEdge_sid-FEF8BB73-5476-4474-B8E5-227308CAA184">
+        <omgdi:waypoint x="235.81668090820312" y="195.0"/>
+        <omgdi:waypoint x="280.8166809082031" y="195.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-267F297D-0BD3-4CEC-8103-84EAFFF77F22" id="BPMNEdge_sid-267F297D-0BD3-4CEC-8103-84EAFFF77F22">
+        <omgdi:waypoint x="380.8166809082031" y="195.0"/>
+        <omgdi:waypoint x="425.8166809082031" y="195.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

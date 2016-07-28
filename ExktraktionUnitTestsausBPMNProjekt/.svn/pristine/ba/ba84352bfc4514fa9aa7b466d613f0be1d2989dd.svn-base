@@ -1,0 +1,64 @@
+package org.extraktion.templatesCreation.behaviour;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.activiti.engine.repository.ProcessDefinition;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.stringtemplate.v4.ST;
+
+/**
+ * Temple erstellendes Objekt.
+ * @author Sascha Buelles
+ *
+ */
+@Entity
+@Table(name = "EXTRAKTION")
+public class StartElementObject extends SuperElementObject {
+
+	/**
+	 * Start Element.
+	 * @param execution Element.
+	 */
+	public StartElementObject(final DelegateExecution execution) {
+		super(execution);
+	}
+
+	@Override
+	public final void createTemplate(final DelegateExecution execution) {
+		
+		// Anfrage von Variablen aus der aktuellen Prozessinstanz
+		ProcessDefinition processdefinition = execution.getEngineServices().getRepositoryService()
+				.createNativeProcessDefinitionQuery()
+				.sql("Select * FROM ACT_RE_PROCDEF WHERE ID_ ='" + execution.getProcessDefinitionId() + "'")
+				.singleResult();
+		
+		setProzesskey(processdefinition.getResourceName());
+
+		String executionUser = "kermit"; // TODO
+
+		// Erstellen des Templates
+
+		ST templateLocal = templateImpl();
+		templateLocal.add("processKey", processdefinition.getKey());
+		templateLocal.add("executionUser", executionUser);
+		templateLocal.add("processVariables", mapToObject(execution.getVariables()));
+		setTemplate(templateLocal);
+		
+	}
+
+	@Override
+	protected final void addImportsForElemente() {
+		setImportTemplate(new ST("import org.activiti.engine.runtime.ProcessInstance;\n"));
+	}
+
+	@Override
+	protected final ST templateImpl() {
+		return new ST(
+				"\n<processVariables:{ pv | variableMap.put(\"<pv.variableName>\", <if(pv.isString)>\"<endif><pv.variableContent><if(pv.isString)>\"<endif>);\n}>"
+						+ "identityService.setAuthenticatedUserId(\"<executionUser>\");\n"
+						+ "processInstance = runtimeService.startProcessInstanceByKey(\"<processKey>\",variableMap);\n");
+	}
+
+}

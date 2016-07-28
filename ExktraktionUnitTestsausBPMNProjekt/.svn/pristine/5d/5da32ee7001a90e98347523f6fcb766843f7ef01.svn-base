@@ -1,0 +1,15 @@
+package org.extraktion.ueberdeckungsalysen;
+
+/**
+ * Analyse auf Basis der Zweigueberdeckung. 
+ * @author Sascha Buelles
+ *
+ */
+public class C1PathCoverage {
+	private double anzahlAktuellePfadausfuehrungen; 
+	private double anzahlAlleSequenzenFluesse;
+	
+	
+	
+	
+}

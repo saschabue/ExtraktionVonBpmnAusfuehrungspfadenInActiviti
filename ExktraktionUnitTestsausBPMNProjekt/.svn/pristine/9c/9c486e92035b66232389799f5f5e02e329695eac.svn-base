@@ -1,0 +1,23 @@
+package org.extraktion.ueberdeckungsalysen;
+
+import java.util.List;
+
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.bpmn.model.Process;
+import org.activiti.bpmn.model.SequenceFlow;
+
+/**Ad.
+ * @author Sascha Buelles
+ *
+ */
+public class AnalyseProcessModel {
+	public int getAmountOfSequenceFlows(BpmnModel model) {
+		List<Process> processes = model.getProcesses();
+		int amountOfSequenceFlows = 0;
+
+		for (Process process : processes) {
+			amountOfSequenceFlows += process.findFlowElementsOfType(SequenceFlow.class).size();
+		}
+		return amountOfSequenceFlows;
+	}
+}

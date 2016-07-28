@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8' standalone="yes"?>
+<!DOCTYPE pfadangabenElementDecl[
+	<!ELEMENT reference (originalProcesses,extendedProcesses,modulTemplates,generatedJUnitTest,stringtemplates, importtemplates, originalTest, extendedTest)>
+	<!ELEMENT originalProcesses (#PCDATA)>
+	<!ELEMENT extendedProcesses (#PCDATA)>
+	<!ELEMENT modulTemplates (#PCDATA)>
+	<!ELEMENT generatedJUnitTest (#PCDATA)>
+	<!ELEMENT stringtemplates (#PCDATA)>
+	<!ELEMENT importtemplates (#PCDATA)>		
+	<!ELEMENT originalTest (#PCDATA)>
+	<!ELEMENT extendedTest (#PCDATA)>
+]>
+
+<!-- Für Angaben von Ordnern bitte auf abschlienden Backslash im Pfad achten! -->
+
+<reference>
+	<!--Relative Angaben können hier vom System verarbeitet werden, wenn der 
+		TestObjectDesigner aus Eclipse gestartet wird. Wird er von einem Jar-Export 
+		im Tomcat gestartet, ändern sich relative Pfadangaben -->
+	<originalProcesses>./src/main/resources/original/</originalProcesses>
+
+	<!--Relative Angaben können hier vom System verarbeitet werden, wenn der 
+		TestObjectDesigner aus Eclipse gestartet wird. Wird er von einem Jar-Export 
+		im Tomcat gestartet, ändern sich relative Pfadangaben -->
+	<extendedProcesses>./src/main/resources/extended/</extendedProcesses>
+
+	<!-- Die Templatemodule werden als Textdateien erstellt. Beim erstellen 
+		eines Unittest werden sie aus diesem Verzeichnis entnommen -->
+	<modulTemplates>C:/ExtraktionTemplateFiles/moduleBearbeitung/</modulTemplates>
+
+	<!-- Pfad zu den fertigen JUnit Testklassen. Diese sollten in das Eclipse 
+		package "generatedUnitTests" kopiert werden. Ansonsten ist eine manuelle 
+		Anpassung in der Testklasse erforderlich -->
+	<generatedJUnitTest>C:/ExtraktionTemplateFiles/JUnitTest/</generatedJUnitTest>
+
+	<!-- Bitte Kopieren Sie die drei String Templates jUnit_ClassFrame_Template,jUnit_Imports_Template 
+		und jUnit_TestMethod_Template, hinterlegt im Ordner:src/main/resources/stringtemplates 
+		in das Verzeichnis, das Sie hier angeben -->
+	<stringtemplates>C:/ExtraktionTemplateFiles/stringtemplateVorlagen/</stringtemplates>
+
+	<!-- Pfad zu den gefüllten Templates für Imports, die von den aufgerufenen 
+		Elementen erzeugt werden. -->
+	<importtemplates>C:/ExtraktionTemplateFiles/importTemplatesBearbeitung/</importtemplates>
+
+	<!-- Pfade zu den Testverzeichnissen src/test/java/org/integration -->
+	<originalTest>./src/test/resources/original/</originalTest>
+	<extendedTest>./src/test/resources/extended/</extendedTest>
+</reference>

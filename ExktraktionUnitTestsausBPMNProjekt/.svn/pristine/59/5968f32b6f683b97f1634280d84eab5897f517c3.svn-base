@@ -1,0 +1,14 @@
+package development;
+
+import org.extraktion.TestObjectDesigner;
+import org.junit.Test;
+
+public class CreateTestFileManually {
+	
+	@Test
+	public final void createTestFile() {
+		TestObjectDesigner.getInstance();
+		TestObjectDesigner.createJUnitTestContent("GO");
+	}
+
+}

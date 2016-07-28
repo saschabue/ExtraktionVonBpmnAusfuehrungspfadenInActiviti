@@ -1,0 +1,59 @@
+package org.integration;
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.PathsettingController;
+import org.StandardProcessIntegrationTest;
+import org.activiti.bpmn.model.BpmnModel;
+import org.activiti.engine.IdentityService;
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
+import org.activiti.engine.repository.Deployment;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
+import org.extraktion.TestObjectDesigner;
+import org.junit.Assert;
+import org.junit.Test;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddCallActivitiLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddProcessEndLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddProcessStartLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddSequenceFlowTakeLoadOberserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddSignalReceiveLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddUserTaskLoadObserver;
+import org.transformBpmnDocumentforRecording.transformationLogik.HandleBPMNDocuments;
+
+public class J_Test_IntermediateTimerCatch extends StandardProcessIntegrationTest {
+
+//	private String filename = "./src/test/resources/extended/callingActivitiprocess.bpmn20.xml";
+//	private String filename1 = "./src/test/resources/extended/called_process.bpmn20.xml";
+
+	@Test
+	public void executeProcess() throws Exception {
+
+		HandleBPMNDocuments handleDocs = new HandleBPMNDocuments();
+		
+		new AddSequenceFlowTakeLoadOberserver(handleDocs);
+		new AddProcessStartLoadObserver(handleDocs);
+		new AddProcessEndLoadObserver(handleDocs);
+		new AddSignalReceiveLoadObserver(handleDocs);
+		
+
+		// Automatisches hinzufuegen der Listener, welche als Observer
+		// angehaengt werden. Fuer Call Activities muessen alle aufgerufenen
+		// Prozesse erweitert werden
+		BpmnModel model = handleDocs.loadDocument("IntermediateTimerCatch.bpmn20.xml", true);
+		handleDocs.saveModelAsDocument(model, "IntermediateTimerCatch.bpmn20.xml", true);
+		
+
+		
+//		TestObjectDesigner.createJUnitTestContent("Test_CallActivityProcessesAndMultiInstance");
+//		Assert.assertTrue(new File(new PathsettingController().getGeneratedJUnitTest() + "ProcessTest_"
+//				+ "Test_CallActivityProcessesAndMultiInstance" + "_JUnit" + ".java").exists());
+	}
+
+}

@@ -1,0 +1,38 @@
+package org.extraktion.listener;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.extraktion.TestObjectDesigner;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.extraktion.templatesCreation.behaviour.EndEventElementObject;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+/**
+ *  Gruppen Listener für End Elemente.
+ * @author Sascha Buelles
+ */
+public class ExecutionListenerImplEndElement extends StandardExecutionListenerImplementation {
+
+	/**
+	 * ID.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected final SuperElementObject createExecutionObjectWithType(final DelegateExecution execution) {
+		SuperElementObject endElementObject = new EndEventElementObject(execution);
+
+		endElementObject.setelementName("EndElement");
+		endElementObject.setElementDefinitionKey(execution.getCurrentActivityId()); 
+
+		SessionFactory hibernateSessionFactory = TestObjectDesigner.getInstance().getHibernateSessionFactory();
+		Session session = hibernateSessionFactory.openSession();
+		session.beginTransaction();
+		endElementObject.setId(session.createNativeQuery("SELECT * FROM EXTRAKTION;").getResultList().size() + 1);
+		session.save(endElementObject);
+		session.getTransaction().commit();
+		session.close();
+		
+		return endElementObject;
+	}
+}

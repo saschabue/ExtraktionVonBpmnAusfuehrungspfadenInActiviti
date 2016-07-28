@@ -1,0 +1,36 @@
+package org.transformBpmnDocumentforRecording.transformationLogik;
+
+import org.activiti.bpmn.model.BpmnModel;
+
+/**
+ * @author Sascha Buelles
+ *
+ */
+public interface IHandleDocuments {
+
+	// /**
+	// * @param model
+	// * @return Model with listeners to record the process execution
+	// */
+	// public BpmnModel addTestRecordListenerToModel(BpmnModel model);
+
+	/**
+	 * @param fileName
+	 *            name of bpmn or bpmn.xml file
+	 * @return The created bpmn model
+	 */
+	public BpmnModel loadDocument(String fileName);
+
+	/**
+	 * The model
+	 * 
+	 * @return true if documents have been saved successfully
+	 */
+	public void saveModelAsDocument(BpmnModel model, String fileName);
+
+	/**
+	 * Load the created model to directory
+	 */
+	abstract public void deployModelToEngine(String filePath, String fileName);
+
+}

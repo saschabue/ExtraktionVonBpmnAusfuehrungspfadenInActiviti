@@ -1,0 +1,39 @@
+package org.extraktion.listener;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.extraktion.TestObjectDesigner;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.extraktion.templatesCreation.behaviour.ParallelGatewayElementObject;
+import org.hibernate.Session;
+
+/**
+ * Gruppen Listener für parallele Gateways.
+ * 
+ * @author Sascha Buelles
+ *
+ */
+public class ExecutionListenerImplParallelGateway extends StandardExecutionListenerImplementation {
+
+	/**
+	 * ID.
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected final SuperElementObject createExecutionObjectWithType(final DelegateExecution execution) {
+		SuperElementObject parallelGatewayElementObject = new ParallelGatewayElementObject(execution);
+		parallelGatewayElementObject.setelementName("ParallelGatewayElement");
+
+		Session session = TestObjectDesigner.getInstance().getHibernateSessionFactory().openSession();
+		session.beginTransaction();
+		parallelGatewayElementObject
+				.setId(session.createNativeQuery("SELECT * FROM EXTRAKTION;").getResultList().size() + 1);
+		parallelGatewayElementObject.setElementDefinitionKey(execution.getCurrentActivityId());
+		session.save(parallelGatewayElementObject);
+		session.getTransaction().commit();
+		session.close();
+		return parallelGatewayElementObject;
+
+	}
+
+}

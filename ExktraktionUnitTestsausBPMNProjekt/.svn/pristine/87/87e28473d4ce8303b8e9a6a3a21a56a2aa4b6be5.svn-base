@@ -1,0 +1,44 @@
+package org.integration;
+
+import org.StandardProcessIntegrationTest;
+import org.activiti.bpmn.model.BpmnModel;
+import org.junit.Test;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddCallActivitiLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddParallelGateWayLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddProcessEndLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddProcessStartLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddSequenceFlowTakeLoadOberserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddServiceTaskLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddSignalReceiveLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddSkriptTaskLoadObserver;
+import org.transformBpmnDocumentforRecording.concreteObserver.AddUserTaskLoadObserver;
+import org.transformBpmnDocumentforRecording.transformationLogik.HandleBPMNDocuments;
+
+/**
+ * Das Model ist nicht lauffaehig. Hier werden lediglich einzelne Komponenten getestet. 
+ * @author Sascha Buelles
+ * 
+ */
+public class J_Test_Listener_JUnit extends StandardProcessIntegrationTest {
+
+	@Test
+	public void executeProcess() throws Exception {
+
+		HandleBPMNDocuments handleDocs = new HandleBPMNDocuments();
+		new AddUserTaskLoadObserver(handleDocs);
+		new AddSequenceFlowTakeLoadOberserver(handleDocs);
+		new AddProcessStartLoadObserver(handleDocs);
+		new AddProcessEndLoadObserver(handleDocs);
+		new AddCallActivitiLoadObserver(handleDocs);
+		new AddParallelGateWayLoadObserver(handleDocs);
+		new AddSkriptTaskLoadObserver(handleDocs);
+		new AddServiceTaskLoadObserver(handleDocs);
+		new AddSignalReceiveLoadObserver(handleDocs);
+		// Das entstehende Model ist nicht ausfuehrbar. Hier wird nur die Logik
+		// fuer bereits vorhandene Listener getestet.
+		BpmnModel testmodel = handleDocs.loadDocument("listenerTest.bpmn20.xml", true);
+		handleDocs.saveModelAsDocument(testmodel, "listenerTest.bpmn20.xml", true);
+
+	}
+
+}

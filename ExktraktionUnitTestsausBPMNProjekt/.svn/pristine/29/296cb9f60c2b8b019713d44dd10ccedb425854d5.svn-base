@@ -1,0 +1,37 @@
+package org.extraktion.listener;
+
+import org.activiti.engine.delegate.DelegateExecution;
+import org.extraktion.TestObjectDesigner;
+import org.extraktion.templatesCreation.SuperElementObject;
+import org.extraktion.templatesCreation.behaviour.TimerCatchEventObject;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+/**
+ * Derzeit nicht genutzt. Vorlage für Intermediate Events siehe SignalReceive.
+ * Boundary Timer siehe SequenceFlowElement/SequenceFlowRegisteredBoundary.
+ * @author Sascha Buelles
+ *
+ */
+public class ExecutionListenerImplTimerCatchEvent extends StandardExecutionListenerImplementation {
+
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected final SuperElementObject createExecutionObjectWithType(final DelegateExecution execution) {
+		SuperElementObject timerCatchEventObject = new TimerCatchEventObject(execution);
+		timerCatchEventObject.setelementName("TimerBoundaryEvent");
+		timerCatchEventObject.setElementDefinitionKey(execution.getCurrentActivityId());
+
+		SessionFactory hibernateSessionFactory = TestObjectDesigner.getInstance().getHibernateSessionFactory();
+		Session session = hibernateSessionFactory.openSession();
+		session.beginTransaction();
+		timerCatchEventObject.setId(session.createNativeQuery("SELECT * FROM EXTRAKTION;").getResultList().size() + 1);
+		session.save(timerCatchEventObject);
+		session.getTransaction().commit();
+		session.close();
+		
+		return timerCatchEventObject;
+	}
+
+}

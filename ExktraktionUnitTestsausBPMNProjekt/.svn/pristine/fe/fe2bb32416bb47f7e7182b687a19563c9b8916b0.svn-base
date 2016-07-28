@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.extraktion.TestObjectDesigner" project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/TestObjectDesigner.java" binary="false" 
+    corner="BOTTOM_LEFT">    
+    <position height="217" width="271" x="160" y="230"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.extraktion.controlUI.RecordingControlWindow" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/controlUI/RecordingControlWindow.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="296" y="104"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.extraktion.coverageanalyses.Coverage" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/coverageanalyses/Coverage.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="159" width="167" x="410" y="27"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.extraktion.listener.TaskListenerImplUserTask" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/TaskListenerImplUserTask.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="75" width="276" x="502" y="300"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.extraktion.listener.StandardExecutionListenerImplementation" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/StandardExecutionListenerImplementation.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="295" y="561"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/ExecutionListenerImplSequenceFlowElement.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="642" y="440"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.extraktion.listener.ExecutionListenerImplSkriptTask" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/ExecutionListenerImplSkriptTask.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="68" width="277" x="501" y="576"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.extraktion.listener.ExecutionListenerImplStartElement" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/ExecutionListenerImplStartElement.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="67" width="279" x="501" y="496"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.extraktion.listener.ExecutionListenerImplParallelGateway" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/listener/ExecutionListenerImplParallelGateway.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="70" width="278" x="501" y="653"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="org.extraktion.templatesCreation.behaviour.StartElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/behaviour/StartElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1161" y="527"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="false" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.extraktion.templatesCreation.behaviour.SequenceFlowElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/behaviour/SequenceFlowElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="935" y="432"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.extraktion.templatesCreation.behaviour.SkriptTaskElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/behaviour/SkriptTaskElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="108" width="185" x="844" y="556"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.extraktion.templatesCreation.behaviour.ParallelGatewayElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/behaviour/ParallelGatewayElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1165" y="685"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.extraktion.templatesCreation.behaviour.UserTaskElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/behaviour/UserTaskElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1122" y="333"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.PathsettingController" project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/PathsettingController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="23" width="167" x="935" y="210"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.extraktion.templatesCreation.SuperElementObject" 
+    project="ExktraktionUnitTestsausBPMNProjekt" 
+    file="/ExktraktionUnitTestsausBPMNProjekt/src/main/java/org/extraktion/templatesCreation/SuperElementObject.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="639" width="298" x="1183" y="-53"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="false">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="17">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <generalization id="18">    
+    <bendpoint x="486" y="442"/>    
+    <bendpoint x="455" y="535"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="19">    
+    <bendpoint x="805" y="530"/>    
+    <bendpoint x="806" y="267"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="23">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="24">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <generalization id="25">    
+    <bendpoint x="1295" y="528"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="26">    
+    <bendpoint x="1173" y="222"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="27">    
+    <bendpoint x="807" y="610"/>    
+    <bendpoint x="806" y="266"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <generalization id="28">    
+    <bendpoint x="1162" y="434"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="29">    
+    <bendpoint x="1332" y="685"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="30">    
+    <bendpoint x="489" y="689"/>    
+    <bendpoint x="457" y="597"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <dependency id="31">    
+    <bendpoint x="808" y="686"/>    
+    <bendpoint x="805" y="266"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <generalization id="32">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="33">    
+    <bendpoint x="805" y="434"/>    
+    <bendpoint x="806" y="265"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <association id="34">    
+    <bendpoint x="148" y="249"/>    
+    <bendpoint x="148" y="214"/>    
+    <bendpoint x="173" y="215"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="35" name="testobjectdesignerInstance">        
+        <position height="18" width="138" x="108" y="195"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="16" width="23" x="183" y="212"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="37">    
+    <bendpoint x="483" y="610"/>    
+    <bendpoint x="459" y="574"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </generalization>  
+  <generalization id="39">    
+    <bendpoint x="1314" y="610"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <dependency id="40">    
+    <bendpoint x="295" y="746"/>    
+    <bendpoint x="1356" y="748"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="42">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="44">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="45">    
+    <bendpoint x="408" y="221"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="46">    
+    <bendpoint x="714" y="265"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -1,0 +1,223 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <signal id="idsignal" name="SignalEins" activiti:scope="global"/>
+  <process id="processId_vortrag_2906" name="ZwischenvortragExample" isExecutable="true">
+    <startEvent id="startid">
+      <extensionElements>
+        <activiti:formProperty id="idformvar1" name="Bitte Random Bool setzen" type="boolean" variable="variable1"/>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplStartElement"/>
+      </extensionElements>
+    </startEvent>
+    <userTask id="idut1" name="U-Task1" activiti:assignee="kermit">
+      <extensionElements>
+        <activiti:taskListener event="complete" class="org.extraktion.listener.TaskListenerImplUserTask"/>
+      </extensionElements>
+    </userTask>
+    <parallelGateway id="sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54">
+      <extensionElements>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplParallelGateway"/>
+      </extensionElements>
+    </parallelGateway>
+    <sequenceFlow id="sid-9761D56D-9EAF-41E9-9804-70B8BB0FDB62" sourceRef="idut1" targetRef="sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <serviceTask id="idst1" name="S-Task" activiti:class="development.JavaLogikExample">
+      <extensionElements>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplServiceTask"/>
+      </extensionElements>
+    </serviceTask>
+    <parallelGateway id="sid-997DFB95-D961-489C-965E-9CEFDECE6977">
+      <extensionElements>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplParallelGateway"/>
+      </extensionElements>
+    </parallelGateway>
+    <endEvent id="sid-51706CCF-8F70-449B-B27F-8A40A435CEDE">
+      <extensionElements>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplEndElement"/>
+      </extensionElements>
+    </endEvent>
+    <subProcess id="sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB" name="subProcess">
+      <startEvent id="sid-226585A9-AE41-409E-91E7-A65EC0C14CBB">
+        <extensionElements>
+          <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplStartElement"/>
+        </extensionElements>
+      </startEvent>
+      <userTask id="idut3" name="U-Task3" activiti:assignee="kermit">
+        <extensionElements>
+          <activiti:formProperty id="idformvar1" name="MÃƒÂ¶chten Sie die Variable verÃƒÂ¤ndern?" type="boolean" variable="variable1"/>
+          <activiti:taskListener event="complete" class="org.extraktion.listener.TaskListenerImplUserTask"/>
+        </extensionElements>
+      </userTask>
+      <endEvent id="sid-424F91CD-2FE7-433A-9066-64ED1030DA2B">
+        <extensionElements>
+          <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplEndElement"/>
+        </extensionElements>
+      </endEvent>
+      <sequenceFlow id="sid-D30CB6CA-8542-4851-A6A7-E58C58AEA07C" sourceRef="sid-226585A9-AE41-409E-91E7-A65EC0C14CBB" targetRef="idut3">
+        <extensionElements>
+          <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+        </extensionElements>
+      </sequenceFlow>
+      <sequenceFlow id="flow7" sourceRef="idut3" targetRef="sid-424F91CD-2FE7-433A-9066-64ED1030DA2B">
+        <extensionElements>
+          <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+        </extensionElements>
+      </sequenceFlow>
+    </subProcess>
+    <sequenceFlow id="sid-902128AF-75FA-470A-AA39-4BC6DD602937" sourceRef="sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54" targetRef="idst1">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <userTask id="usertask1" name="User Task" activiti:assignee="kermit">
+      <extensionElements>
+        <activiti:taskListener event="complete" class="org.extraktion.listener.TaskListenerImplUserTask"/>
+      </extensionElements>
+    </userTask>
+    <intermediateCatchEvent id="signalintermediatecatchevent1" name="SignalCatchEvent">
+      <extensionElements>
+        <activiti:executionListener event="end" class="org.extraktion.listener.ExecutionListenerImplSignalReceive"/>
+      </extensionElements>
+      <signalEventDefinition signalRef="idsignal"/>
+    </intermediateCatchEvent>
+    <sequenceFlow id="flow3" sourceRef="sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54" targetRef="signalintermediatecatchevent1">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="signalintermediatecatchevent1" targetRef="usertask1">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow5" sourceRef="usertask1" targetRef="sid-997DFB95-D961-489C-965E-9CEFDECE6977">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow8" sourceRef="sid-997DFB95-D961-489C-965E-9CEFDECE6977" targetRef="sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow9" sourceRef="sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB" targetRef="sid-51706CCF-8F70-449B-B27F-8A40A435CEDE">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <boundaryEvent id="boundarytimer1" name="Timer" attachedToRef="idut1" cancelActivity="true">
+      <timerEventDefinition>
+        <timeCycle>R3/PT10S</timeCycle>
+      </timerEventDefinition>
+    </boundaryEvent>
+    <sequenceFlow id="flow10" sourceRef="idst1" targetRef="sid-997DFB95-D961-489C-965E-9CEFDECE6977">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow11" sourceRef="boundarytimer1" targetRef="sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+    <sequenceFlow id="flow12" sourceRef="startid" targetRef="idut1">
+      <extensionElements>
+        <activiti:executionListener event="take" class="org.extraktion.listener.ExecutionListenerImplSequenceFlowElement"/>
+      </extensionElements>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_processId_vortrag_2906">
+    <bpmndi:BPMNPlane bpmnElement="processId_vortrag_2906" id="BPMNPlane_processId_vortrag_2906">
+      <bpmndi:BPMNShape bpmnElement="startid" id="BPMNShape_startid">
+        <omgdc:Bounds height="35.0" width="35.0" x="54.0" y="229.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="idut1" id="BPMNShape_idut1">
+        <omgdc:Bounds height="80.0" width="100.0" x="134.0" y="207.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boundarytimer1" id="BPMNShape_boundarytimer1">
+        <omgdc:Bounds height="30.0" width="30.0" x="180.0" y="270.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54" id="BPMNShape_sid-7A0FB917-CE00-4572-A069-0DEB8FA2EE54">
+        <omgdc:Bounds height="40.0" width="40.0" x="264.0" y="229.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="idst1" id="BPMNShape_idst1">
+        <omgdc:Bounds height="80.0" width="100.0" x="357.0" y="252.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-997DFB95-D961-489C-965E-9CEFDECE6977" id="BPMNShape_sid-997DFB95-D961-489C-965E-9CEFDECE6977">
+        <omgdc:Bounds height="40.0" width="40.0" x="720.0" y="254.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-51706CCF-8F70-449B-B27F-8A40A435CEDE" id="BPMNShape_sid-51706CCF-8F70-449B-B27F-8A40A435CEDE">
+        <omgdc:Bounds height="35.0" width="35.0" x="960.0" y="440.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB" id="BPMNShape_sid-3DD4A732-452D-4AE6-A903-2FAADC2D30EB">
+        <omgdc:Bounds height="158.0" width="335.0" x="579.0" y="400.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-226585A9-AE41-409E-91E7-A65EC0C14CBB" id="BPMNShape_sid-226585A9-AE41-409E-91E7-A65EC0C14CBB">
+        <omgdc:Bounds height="35.0" width="35.0" x="599.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="idut3" id="BPMNShape_idut3">
+        <omgdc:Bounds height="80.0" width="100.0" x="689.0" y="443.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-424F91CD-2FE7-433A-9066-64ED1030DA2B" id="BPMNShape_sid-424F91CD-2FE7-433A-9066-64ED1030DA2B">
+        <omgdc:Bounds height="35.0" width="35.0" x="855.0" y="465.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="usertask1" id="BPMNShape_usertask1">
+        <omgdc:Bounds height="80.0" width="107.0" x="482.0" y="150.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="signalintermediatecatchevent1" id="BPMNShape_signalintermediatecatchevent1">
+        <omgdc:Bounds height="35.0" width="35.0" x="370.0" y="172.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-9761D56D-9EAF-41E9-9804-70B8BB0FDB62" id="BPMNEdge_sid-9761D56D-9EAF-41E9-9804-70B8BB0FDB62">
+        <omgdi:waypoint x="234.0" y="247.0"/>
+        <omgdi:waypoint x="264.0" y="249.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-D30CB6CA-8542-4851-A6A7-E58C58AEA07C" id="BPMNEdge_sid-D30CB6CA-8542-4851-A6A7-E58C58AEA07C">
+        <omgdi:waypoint x="634.0" y="482.0"/>
+        <omgdi:waypoint x="689.0" y="483.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="789.0" y="483.0"/>
+        <omgdi:waypoint x="855.0" y="482.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-902128AF-75FA-470A-AA39-4BC6DD602937" id="BPMNEdge_sid-902128AF-75FA-470A-AA39-4BC6DD602937">
+        <omgdi:waypoint x="304.0" y="249.0"/>
+        <omgdi:waypoint x="357.0" y="292.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="284.0" y="229.0"/>
+        <omgdi:waypoint x="387.0" y="207.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="405.0" y="189.0"/>
+        <omgdi:waypoint x="482.0" y="190.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="535.0" y="230.0"/>
+        <omgdi:waypoint x="740.0" y="254.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="740.0" y="294.0"/>
+        <omgdi:waypoint x="499.0" y="445.0"/>
+        <omgdi:waypoint x="579.0" y="479.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="914.0" y="479.0"/>
+        <omgdi:waypoint x="960.0" y="457.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="457.0" y="292.0"/>
+        <omgdi:waypoint x="720.0" y="274.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="195.0" y="300.0"/>
+        <omgdi:waypoint x="746.0" y="400.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="89.0" y="246.0"/>
+        <omgdi:waypoint x="134.0" y="247.0"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
