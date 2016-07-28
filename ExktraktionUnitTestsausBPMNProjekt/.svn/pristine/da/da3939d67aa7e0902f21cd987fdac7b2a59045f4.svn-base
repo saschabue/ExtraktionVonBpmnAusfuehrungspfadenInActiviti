@@ -1,7 +1,0 @@
-/**
- * Hauptprojekt: Framework zur Erweiterung einer Prozessdefinition und Extraktion von JUnit Tests für BPMN Prozesse in Activiti.
- * Enthält PathsettingController.java Datei zur Verwaltung der externen Verzeichnisstruktur.
- * @author Sascha Buelles
- */
-package org;
-
